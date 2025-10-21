@@ -1,36 +1,49 @@
-import { createBrowserRouter } from "react-router";
-import HomeLayout from "../Layout/HomeLayout";
-import Home from "../Pages/Home";
-import CategoryNews from "../Pages/CategoryNews";
+import { createBrowserRouter } from 'react-router'
+import HomeLayout from '../Layout/HomeLayout'
+import Home from '../Pages/Home'
+import CategoryNews from '../Pages/CategoryNews'
+import Login from '../Pages/Login'
+import Register from '../Pages/Register'
+import AuthLayout from '../Layout/AuthLayout'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <HomeLayout></HomeLayout>,
     children: [
-     {
-      path: '',
-      element: <Home></Home>
-     },
-     {
-      path: '/category/:id',
-      element: <CategoryNews></CategoryNews>,
-      loader: () => fetch('/news.json')
-     },
-    ]
+      {
+        path: '',
+        element: <Home></Home>,
+      },
+      {
+        path: '/category/:id',
+        element: <CategoryNews></CategoryNews>,
+        loader: () => fetch('/news.json'),
+      },
+    ],
   },
   {
     path: '/auth',
-    element: <h2>Authentication Layout</h2>
+    element: <AuthLayout></AuthLayout>,
+    children: [
+      {
+        path: '/auth/login',
+        element: <Login></Login>,
+      },
+      {
+        path: '/auth/register',
+        element: <Register></Register>,
+      },
+    ],
   },
   {
     path: '/news',
-    element: <h2>News Layout</h2>
+    element: <h2>News Layout</h2>,
   },
   {
     path: '/*',
-    element: <h2>Error  404</h2>
+    element: <h2>Error 404</h2>,
   },
-]);
+])
 
-export default router;
+export default router

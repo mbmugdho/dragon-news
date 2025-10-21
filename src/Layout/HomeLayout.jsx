@@ -11,8 +11,8 @@ const HomeLayout = () => {
   return (
     <Container>
       <div>
-        <header>
-          <Header></Header>
+        <header className='sticky top-0 z-50 bg-base-100'>
+          <Header ></Header>
           <section className="w-11/12 mx-auto my-3">
             <LatestNews></LatestNews>
           </section>
@@ -21,13 +21,13 @@ const HomeLayout = () => {
           </nav>
         </header>
         <main className="w-11/12 mx-auto my-3 grid grid-cols-12 gap-5">
-          <aside className="col-span-3">
+          <aside className="col-span-3 sticky top-[250px] h-fit">
             <LeftAside></LeftAside>
           </aside>
           <section className="main col-span-6">
             <Outlet></Outlet>
           </section>
-          <aside className="col-span-3">
+          <aside className="col-span-3 sticky top-[250px] h-fit">
             <RightAside></RightAside>
           </aside>
         </main>
